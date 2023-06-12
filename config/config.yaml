@@ -1,0 +1,55 @@
+AppVersion: 1.0.0
+
+HTTP:
+  Port: ":5000"
+  Development: true
+  Timeout: 15
+  ReadTimeout: 5
+  WriteTimeout: 5
+  MaxConnectionIdle: 5
+  MaxConnectionAge: 5
+
+GRPC:
+  Port: ":5007"
+  MaxConnectionIdle: 5
+  Timeout: 15
+  MaxConnectionAge: 5
+
+Logger:
+  DisableCaller: false
+  DisableStacktrace: false
+  Encoding: json
+  Level: info
+
+Nats:
+  URL: "localhost:4222"
+  ClusterID: microservice
+  ClientID: wallet
+
+Metrics:
+  Port: ":7070"
+  Url: "host.docker.internal:7070"
+  ServiceName: wallet
+
+Jaeger:
+  Host: localhost:6831
+  ServiceName: wallet
+  LogSpans: false
+
+Redis:
+  RedisAddr: "localhost:6379"
+  RedisPassword:
+  RedisDefaultDB: 0
+  MinIdleConn: 200
+  PoolSize: 12000
+  PoolTimeout: 240
+  DB: 0
+
+PostgreSQL:
+  PostgresqlHost: localhost
+  PostgresqlPort: 5432
+  PostgresqlUser: postgres
+  PostgresqlPassword: postgres
+  PostgresqlDBName: wallet_db
+  PostgresqlSslmode: "disable"
+  PgDriver: pgx

@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+//protoc --go_out=plugins=grpc:. *.proto
+
+package walletService;
+option go_package = ".;walletService";
+
+message Wallet {
+  string ID = 1;
+  string Mobile = 2;
+  string Name = 3;
+  string Description = 4;
+  int64  Balance = 5;
+  string Avatar = 6;
+  google.protobuf.Timestamp CreatedAt = 7;
+  google.protobuf.Timestamp UpdatedAt = 8;
+}
+
+message Empty {}
+
+message CreateReq {
+  string Mobile = 1;
+  string Name = 2;
+  string Description = 3;
+  int64  Balance = 4;
+  string Avatar = 5;
+}
+
+message CreateRes {
+  string status = 1;
+}
+
+message ChargeReq {
+  string Mobile = 1;
+  int64  Amount = 4;
+}
+
+message ChargeRes {
+  string status = 1;
+}
+
+message UpdateReq {
+  string ID = 1;
+  string Mobile = 2;
+  string Name = 3;
+  string Description = 4;
+  int64  Balance = 5;
+  string Avatar = 6;
+}
+
+message UpdateRes {
+  Wallet Wallet = 1;
+}
+
+message GetByIDReq {
+  string WalletID = 1;
+}
+
+message GetByIDRes {
+  Wallet Wallet = 1;
+}
+
+service WalletService {
+  rpc Create(CreateReq) returns (CreateRes) {}
+  rpc Charge(ChargeReq) returns (ChargeRes) {}
+  rpc GetByID(GetByIDReq) returns (GetByIDRes) {}
+}

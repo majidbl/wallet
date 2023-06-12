@@ -1,0 +1,123 @@
+definitions:
+  models.Transaction:
+    properties:
+      amount:
+        type: integer
+      created_at:
+        type: string
+      id:
+        type: string
+      type:
+        type: string
+      wallet_id:
+        type: string
+    type: object
+  models.Wallet:
+    properties:
+      avatar:
+        type: string
+      balance:
+        type: integer
+      createdAt:
+        type: string
+      description:
+        maxLength: 500
+        minLength: 3
+        type: string
+      id:
+        type: string
+      mobile:
+        maxLength: 250
+        minLength: 3
+        type: string
+      name:
+        type: string
+      updatedAt:
+        type: string
+    required:
+    - balance
+    - description
+    - mobile
+    type: object
+info:
+  contact: {}
+paths:
+  /transaction/{transaction_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get transaction by transaction uuid
+      parameters:
+      - description: transaction_id
+        in: path
+        name: transaction_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Transaction'
+      summary: Get transaction by id
+      tags:
+      - Transactions
+  /wallet:
+    post:
+      consumes:
+      - application/json
+      description: Create new wallet and send it
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Wallet'
+      summary: Create new wallet
+      tags:
+      - Wallet
+  /wallet/{wallet_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get wallet by wallet uuid
+      parameters:
+      - description: wallet_id
+        in: path
+        name: wallet_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Wallet'
+      summary: Get wallet by id
+      tags:
+      - Wallet
+  /wallet/balance/{wallet_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get wallet by wallet uuid
+      parameters:
+      - description: wallet_id
+        in: path
+        name: wallet_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Wallet'
+      summary: Get wallet balance by id
+      tags:
+      - Wallet
+swagger: "2.0"
