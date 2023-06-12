@@ -121,7 +121,7 @@ func (s *server) Run() error {
 	walletHandlers.MapRoutes()
 
 	transactionHandlers := transactionV1.NewTransactionHandlers(
-		v1.Group("/transactions"),
+		v1.Group("/transaction"),
 		transactionUC,
 		s.log,
 		validate,
