@@ -1,4 +1,4 @@
-### Golang NATS gRPC Postgresql ewallet microservice example 👋
+### arvan wallet microservice  👋
 
 ### Jaeger UI:
 
