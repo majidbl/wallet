@@ -121,7 +121,7 @@ func (h *walletHandlers) GetByID() echo.HandlerFunc {
 // @Accept json
 // @Produce json
 // @Param wallet_id path string true "wallet_id"
-// @Success 200 {object} models.Wallet
+// @Success 200 {object} models.WalletBalanceResponse
 // @Router /wallet/balance/{wallet_id} [get]
 func (h *walletHandlers) GetBalance() echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -144,8 +144,6 @@ func (h *walletHandlers) GetBalance() echo.HandlerFunc {
 		}
 
 		successRequests.Inc()
-		return c.JSON(http.StatusOK, map[string]int64{
-			"balance": m.Balance,
-		})
+		return c.JSON(http.StatusOK, models.WalletBalanceResponse{Balance: m.Balance})
 	}
 }

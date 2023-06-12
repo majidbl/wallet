@@ -39,6 +39,11 @@ definitions:
     - description
     - mobile
     type: object
+  models.WalletBalanceResponse:
+    properties:
+      balance:
+        type: integer
+    type: object
 info:
   contact: {}
 paths:
@@ -116,7 +121,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.Wallet'
+            $ref: '#/definitions/models.WalletBalanceResponse'
       summary: Get wallet balance by id
       tags:
       - Wallet

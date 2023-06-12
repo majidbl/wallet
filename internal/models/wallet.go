@@ -22,6 +22,10 @@ type Wallet struct {
 	UpdatedAt   time.Time `json:"updatedAt"`
 }
 
+type WalletBalanceResponse struct {
+	Balance int64 `json:"balance"`
+}
+
 // WalletModel models
 type WalletModel struct {
 	ID          uuid.UUID

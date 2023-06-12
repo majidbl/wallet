@@ -1,7 +1,6 @@
 package server
 
 import (
-	"fmt"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"net/http"
 	"strings"
@@ -20,9 +19,7 @@ func (s *server) runHttpServer() {
 	})
 
 	s.mapRoutes()
-	for _, route := range s.echo.Routes() {
-		fmt.Println(route.Path, " : ", route.Method)
-	}
+
 	s.echo.GET("/metrics", echo.WrapHandler(promhttp.Handler()))
 
 	go func() {
